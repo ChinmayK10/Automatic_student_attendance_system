@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="attendance-section" class="bg-white rounded-lg shadow p-6">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Take Attendance</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Camera Feed</h3>
+            <div class="relative w-full aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                <video id="video" class="w-full h-full object-cover" autoplay playsinline></video>
+                <canvas id="canvas" class="hidden"></canvas>
+                <div id="cameraOverlay" class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-gray-500 text-center"><i class="fas fa-camera text-4xl mb-2"></i><p>Camera not started</p></div>
+                </div>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+                <button id="startCamera" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"><i class="fas fa-play mr-2"></i>Start Camera</button>
+                <button id="stopCamera" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors hidden"><i class="fas fa-stop mr-2"></i>Stop Camera</button>
+                <button id="startRealtime" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors hidden"><i class="fas fa-sync-alt mr-2"></i>Start Real-time</button>
+                <button id="capturePhoto" class="bg-accent text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"><i class="fas fa-camera mr-2"></i>Manual Capture</button>
+            </div>
+        </div>
+        <div>
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Settings & Results</h3>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                    <select id="subjectSelect" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"></select>
+                </div>
+            </div>
+            <div class="mt-6">
+                <h4 class="text-md font-medium text-gray-900 mb-3">Recognition Results</h4>
+                <div id="recognitionResults" class="bg-gray-50 rounded-lg p-4 min-h-[150px] border">
+                    <p class="text-gray-500 text-center">No recognition results yet</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

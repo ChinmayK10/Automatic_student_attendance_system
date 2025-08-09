@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af', 
+                        secondary: '#dc2626', 
+                        accent: '#3b82f6'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+    <nav class="bg-primary shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-user-graduate text-white text-2xl mr-3"></i>
+                    <h1 class="text-white text-xl font-bold">Student Attendance System</h1>
+                </div>
+                <div id="nav-links" class="flex items-center space-x-1">
+                    <a href="{{ url_for('index') }}" class="nav-link text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                    </a>
+                    <a href="{{ url_for('attendance') }}" class="nav-link text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-camera mr-2"></i>Take Attendance
+                    </a>
+                    <a href="{{ url_for('students') }}" class="nav-link text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-users mr-2"></i>Students
+                    </a>
+                    <a href="{{ url_for('reports') }}" class="nav-link text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-chart-bar mr-2"></i>Reports
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {% block content %}{% endblock %}
+    </main>
+
+    <div id="addStudentModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg shadow-xl max-w-md w-full">
+                <div class="flex justify-between items-center p-6 border-b">
+                    <h3 class="text-lg font-semibold text-gray-900">Add New Student</h3>
+                    <button class="close-modal-btn text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="addStudentForm" class="p-6 space-y-4">
+                    <div>
+                        <label for="studentName" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                        <input type="text" id="studentName" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div>
+                        <label for="studentRoll" class="block text-sm font-medium text-gray-700 mb-2">Roll Number</label>
+                        <input type="text" id="studentRoll" name="roll_number" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div>
+                        <label for="studentEmail" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input type="email" id="studentEmail" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div>
+                        <label for="studentPhone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                        <input type="tel" id="studentPhone" name="phone" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div>
+                        <label for="studentImage" class="block text-sm font-medium text-gray-700 mb-2">Profile Image</label>
+                        <input type="file" id="studentImage" name="image" accept="image/*" required class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-primary hover:file:bg-blue-100">
+                    </div>
+                    <div class="flex justify-end space-x-3 pt-4 border-t">
+                        <button type="button" class="close-modal-btn px-4 py-2 text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50">
+                            Cancel
+                        </button>
+                        <button type="submit" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-blue-700">
+                            Add Student
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div id="loadingSpinner" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white rounded-lg p-6 flex items-center space-x-3">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                <span class="text-gray-700">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="reports-section" class="space-y-6">
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Filter Attendance Reports</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+                <label for="reportStudent" class="block text-sm font-medium text-gray-700 mb-2">Student Name</label>
+                <input type="text" id="reportStudent" placeholder="Filter by student name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+            <div>
+                <label for="reportDate" class="block text-sm font-medium text-gray-700 mb-2">Date</label>
+                <input type="date" id="reportDate" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+            <div>
+                <label for="reportSubject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                <select id="reportSubject" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                    </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">Attendance Records</h3>
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subject</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Session ID</th>
+                    </tr>
+                </thead>
+                <tbody id="attendanceTableBody" class="bg-white divide-y divide-gray-200">
+                    <tr><td colspan="5" class="text-center p-4 text-gray-500">Apply filters to see records.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

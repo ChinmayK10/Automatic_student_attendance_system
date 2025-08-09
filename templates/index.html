@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="dashboard-section">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white rounded-lg shadow p-6 border-l-4 border-primary"><div class="flex items-center"><div class="p-3 rounded-full bg-blue-100 text-primary"><i class="fas fa-users text-2xl"></i></div><div class="ml-4"><p class="text-sm font-medium text-gray-600">Total Students</p><p class="text-2xl font-semibold text-gray-900" id="totalStudents">0</p></div></div></div>
+        <div class="bg-white rounded-lg shadow p-6 border-l-4 border-green-500"><div class="flex items-center"><div class="p-3 rounded-full bg-green-100 text-green-600"><i class="fas fa-check-circle text-2xl"></i></div><div class="ml-4"><p class="text-sm font-medium text-gray-600">Present Today</p><p class="text-2xl font-semibold text-gray-900" id="presentToday">0</p></div></div></div>
+        <div class="bg-white rounded-lg shadow p-6 border-l-4 border-secondary"><div class="flex items-center"><div class="p-3 rounded-full bg-red-100 text-secondary"><i class="fas fa-times-circle text-2xl"></i></div><div class="ml-4"><p class="text-sm font-medium text-gray-600">Absent Today</p><p class="text-2xl font-semibold text-gray-900" id="absentToday">0</p></div></div></div>
+        <div class="bg-white rounded-lg shadow p-6 border-l-4 border-accent"><div class="flex items-center"><div class="p-3 rounded-full bg-blue-100 text-accent"><i class="fas fa-percentage text-2xl"></i></div><div class="ml-4"><p class="text-sm font-medium text-gray-600">Attendance Rate</p><p class="text-2xl font-semibold text-gray-900" id="attendanceRate">0%</p></div></div></div>
+    </div>
+    <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Recent Activity</h2>
+        <div id="recentActivity" class="space-y-3">
+             <p class="text-gray-500 text-center">Loading activity...</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
